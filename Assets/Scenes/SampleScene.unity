@@ -338,11 +338,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9523d1aee9148cc49903079d0967f5a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodenChest: 450
+  woodenChest: 500
   bronzeChest: 250
   silverChest: 100
-  goldChest: 20
-  platinumChest: 1
+  goldChest: 50
+  platinumChest: 15
   chestTypes: []
   woodenChestCommon: 200
   woodenChestUncommon: 60
@@ -350,6 +350,30 @@ MonoBehaviour:
   woodenChestEpic: 4
   woodenChestLegendary: 1
   woodChestDrops: []
+  bronzeChestCommon: 100
+  bronzeChestUncommon: 100
+  bronzeChestRare: 50
+  bronzeChestEpic: 15
+  bronzeChestLegendary: 10
+  bronzeChestDrops: []
+  silverChestCommon: 50
+  silverChestUncommon: 100
+  silverChestRare: 75
+  silverChestEpic: 35
+  silverChestLegendary: 15
+  silverChestDrops: []
+  goldChestCommon: 0
+  goldChestUncommon: 75
+  goldChestRare: 125
+  goldChestEpic: 50
+  goldChestLegendary: 25
+  goldChestDrops: []
+  platinumChestCommon: 0
+  platinumChestUncommon: 0
+  platinumChestRare: 125
+  platinumChestEpic: 100
+  platinumChestLegendary: 50
+  platinumChestDrops: []
 --- !u!4 &1300372323
 Transform:
   m_ObjectHideFlags: 0

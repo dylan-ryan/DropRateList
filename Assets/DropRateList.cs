@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,173 +6,219 @@ using UnityEngine;
 
 public class DropRateList : MonoBehaviour
 {
+    //Use space to get a random chest and drop
+
     [Header("Chest Types")]
-    public int woodenChest = 500;
-    public int bronzeChest = 250;
-    public int silverChest = 100;
-    public int goldChest = 50;
-    public int platinumChest = 15;
+     public int woodenChest = 500;
+     public int bronzeChest = 250;
+     public int silverChest = 100;
+     public int goldChest = 50;
+     public int platinumChest = 15;
     [SerializeField] List<string> chestTypes;
 
     [Header("Wooden Chest")]
-    public int woodenChestCommon = 200;
-    public int woodenChestUncommon = 60;
-    public int woodenChestRare = 10;
+     public int woodenChestCommon = 200;
+     public int woodenChestUncommon = 60;
+     public int woodenChestRare = 10;
      public int woodenChestEpic = 4;
      public int woodenChestLegendary = 1;
     [SerializeField] List<string> woodChestDrops;
     
     [Header("Bronze Chest")]
-    public int bronzeChestCommon = 200;
-     public int bronzeChestUncommon = 60;
-     public int bronzeChestRare = 10;
-     public int bronzeChestEpic = 4;
-     public int bronzeChestLegendary = 1;
+     public int bronzeChestCommon = 100;
+     public int bronzeChestUncommon = 100;
+     public int bronzeChestRare = 50;
+     public int bronzeChestEpic = 15;
+     public int bronzeChestLegendary = 10;
      [SerializeField] List<string> bronzeChestDrops;
    
     [Header("Silver Chest")]
-    public int silverChestCommon = 200;
-    public int silverChestUncommon = 60;
-    public int silverChestRare = 10;
-    public int silverChestEpic = 4;
-    public int silverChestLegendary = 1;
+     public int silverChestCommon = 50;
+     public int silverChestUncommon = 100;
+     public int silverChestRare = 75;
+     public int silverChestEpic = 35;
+     public int silverChestLegendary = 15;
     [SerializeField] List<string> silverChestDrops;
    
     [Header("Gold Chest")]
-    public int goldChestCommon = 200;
-    public int goldChestUncommon = 60;
-    public int goldChestRare = 10;
-    public int goldChestEpic = 4;
-    public int goldChestLegendary = 1;
+     public int goldChestCommon = 0;
+     public int goldChestUncommon = 75;
+     public int goldChestRare = 125;
+     public int goldChestEpic = 50;
+     public int goldChestLegendary = 25;
     [SerializeField] List<string> goldChestDrops;
   
     [Header("Platinum Chest")]
-    public int platinumChestCommon = 200;
-    public int platinumChestUncommon = 60;
-    public int platinumChestRare = 10;
-    public int platinumChestEpic = 4;
-    public int platinumChestLegendary = 1;
+     public int platinumChestCommon = 0;
+     public int platinumChestUncommon = 0;
+     public int platinumChestRare = 125;
+     public int platinumChestEpic = 100;
+     public int platinumChestLegendary = 50;
      [SerializeField] List<string> platinumChestDrops;
 
     // Start is called before the first frame update
     void Start()
     {
-        chestTypes.Add("Wooden");
-        chestTypes.Add("Bronze");
-        chestTypes.Add("Silver");
-        chestTypes.Add("Gold");
-        chestTypes.Add("Platinum");
-
-        woodChestDrops.Add("Common");
-        woodChestDrops.Add("Uncommon");
-        woodChestDrops.Add("Rare");
-        woodChestDrops.Add("Epic");
-        woodChestDrops.Add("Legendary");
-
-        bronzeChestDrops.Add("Common");
-        bronzeChestDrops.Add("Uncommon");
-        bronzeChestDrops.Add("Rare");
-        bronzeChestDrops.Add("Epic");
-        bronzeChestDrops.Add("Legendary");
-
-        silverChestDrops.Add("Common");
-        silverChestDrops.Add("Uncommon");
-        silverChestDrops.Add("Rare");
-        silverChestDrops.Add("Epic");
-        silverChestDrops.Add("Legendary");
-
-        goldChestDrops.Add("Common");
-        goldChestDrops.Add("Uncommon");
-        goldChestDrops.Add("Rare");
-        goldChestDrops.Add("Epic");
-        goldChestDrops.Add("Legendary");
-
-        platinumChestDrops.Add("Common");
-        platinumChestDrops.Add("Uncommon");
-        platinumChestDrops.Add("Rare");
-        platinumChestDrops.Add("Epic");
-        platinumChestDrops.Add("Legendary");
-        //coulda done a forloop
-        int chestsAddedUp = woodenChest + bronzeChest + silverChest + goldChest + platinumChest;
-        int woodenAddedUp = woodenChestCommon + woodenChestUncommon + woodenChestRare + woodenChestEpic + woodenChestLegendary;
-        int bronzeAddedUp = bronzeChestCommon + bronzeChestUncommon + bronzeChestRare + bronzeChestEpic + bronzeChestLegendary;
-        int silverAddedUp = silverChestCommon + silverChestUncommon + silverChestRare + silverChestEpic + silverChestLegendary;
-        int goldAddedUp = goldChestCommon + goldChestUncommon + goldChestRare + goldChestEpic + goldChestLegendary;
-        int platinumAddedUp = platinumChestCommon + platinumChestUncommon + platinumChestRare + platinumChestEpic + platinumChestLegendary;
-
-        int chestChance = UnityEngine.Random.Range (0, chestsAddedUp);
-        int woodenChance = UnityEngine.Random.Range(0, woodenAddedUp);
-        int bronzeChance = UnityEngine.Random.Range (0, bronzeAddedUp);
-        int silverChance = UnityEngine.Random.Range (0, silverAddedUp);
-        int goldChance = UnityEngine.Random.Range (0, goldAddedUp);
-        int platinumChance = UnityEngine.Random.Range (0, platinumAddedUp);
-
-        if (chestChance <= woodenChest)
-            if(chestChance >= bronzeChest)
-            {
-            if (woodenChance <= woodenChestLegendary)
-            {
-                Debug.Log("Wooden Chest " + "Legendary");
-            }
-            if (woodenChance <= woodenChestEpic)
-                if (woodenChance >= woodenChestLegendary)
-                {
-                    Debug.Log("Wooden Chest " + "Epic");
-                }
-            if (woodenChance <= woodenChestRare)
-                if (woodenChance >= woodenChestEpic)
-                {
-                    Debug.Log("Wooden Chest " + "Rare");
-                }
-            if (woodenChance <= woodenChestUncommon)
-                if (woodenChance >= woodenChestRare)
-                {
-                    Debug.Log("Wooden Chest " + "Uncommon");
-                }
-            if (woodenChance <= woodenChestCommon)
-                if (woodenChance >= woodenChestUncommon)
-                {
-                    Debug.Log("Wooden Chest " + "Common");
-                }
-        }
-
-        if (chestChance <= platinumChest)
+        for(int i = 0; i <= woodenChest; i++)
         {
-            if(platinumChance <= platinumChestLegendary)
-            {
-                Debug.Log("Platinum Chest " + "Legendary");
-            }
-            if(platinumChance <= platinumChestEpic)
-                if(platinumChance >= platinumChestLegendary)
-                {
-                    Debug.Log("Platinum Chest " + "Epic");
-                }
-            if(platinumChance <= platinumChestRare)
-                if(platinumChance >= platinumChestEpic)
-                {
-                    Debug.Log("Platinum Chest " + "Rare");
-                }
-            if(platinumChance <= platinumChestUncommon)
-                if(platinumChance >= platinumChestRare)
-                {
-                    Debug.Log("Platinum Chest " + "Uncommon");
-                }
-            if(platinumChance <= platinumChestCommon)
-                if(platinumChance >= platinumChestUncommon)
-                {
-                    Debug.Log("Platinum Chest " + "Common");
-                }
+            chestTypes.Add("Wooden");
+        }
+        for (int i = 0; i <= bronzeChest; i++)
+        {
+            chestTypes.Add("Bronze");
+        }
+        for (int i = 0; i <= silverChest; i++)
+        {
+            chestTypes.Add("Silver");
+        }
+        for (int i = 0; i <= goldChest; i++)
+        {
+            chestTypes.Add("Gold");
+        }
+        for (int i = 0; i <= platinumChest; i++)
+        {
+            chestTypes.Add("Platinum");
         }
 
+
+        for (int i = 0; i <= woodenChestCommon; i++)
+        {
+        woodChestDrops.Add("Common");
+        }
+        for (int i = 0; i <= woodenChestUncommon; i++)
+        {
+        woodChestDrops.Add("Uncommon");
+        }
+        for (int i = 0; i <= woodenChestRare; i++)
+        {
+        woodChestDrops.Add("Rare");
+        }
+        for (int i = 0; i <= woodenChestEpic; i++)
+        {
+        woodChestDrops.Add("Epic");
+        }
+        for (int i = 0; i <= woodenChestLegendary; i++)
+        {
+        woodChestDrops.Add("Legendary");
+        }
+
+        for (int i = 0; i <= bronzeChestCommon; i++)
+        {
+        bronzeChestDrops.Add("Common");
+        }
+        for (int i = 0; i <= bronzeChestUncommon; i++)
+        {
+        bronzeChestDrops.Add("Uncommon");
+        }
+        for (int i = 0; i <= bronzeChestRare; i++)
+        {
+        bronzeChestDrops.Add("Rare");
+        }
+        for (int i = 0; i <= bronzeChestEpic; i++)
+        {
+        bronzeChestDrops.Add("Epic");
+        }
+        for (int i = 0; i <= bronzeChestLegendary; i++)
+        {
+        bronzeChestDrops.Add("Legendary");
+        }
+
+        for (int i = 0; i <= silverChestCommon; i++)
+        {
+        silverChestDrops.Add("Common");
+        }
+        for (int i = 0; i <= silverChestUncommon; i++)
+        {
+        silverChestDrops.Add("Uncommon");
+        }
+        for (int i = 0; i <= silverChestRare; i++)
+        {
+        silverChestDrops.Add("Rare");
+        }
+        for (int i = 0; i <= silverChestEpic; i++)
+        {
+        silverChestDrops.Add("Epic");
+        }
+        for (int i = 0; i <= silverChestLegendary; i++)
+        {
+        silverChestDrops.Add("Legendary");
+        }
+
+        for (int i = 0; i <= goldChestCommon; i++)
+        {
+        goldChestDrops.Add("Common");
+        }
+        for (int i = 0; i <= goldChestUncommon; i++)
+        {
+        goldChestDrops.Add("Uncommon");
+        }
+        for (int i = 0; i <= goldChestRare; i++)
+        {
+        goldChestDrops.Add("Rare");
+        }
+        for (int i = 0; i <= goldChestEpic; i++)
+        {
+        goldChestDrops.Add("Epic");
+        }
+        for (int i = 0; i <= goldChestLegendary; i++)
+        {
+        goldChestDrops.Add("Legendary");
+        }
+
+        for (int i = 0; i <= platinumChestCommon; i++)
+        {
+        platinumChestDrops.Add("Common");
+        }
+        for (int i = 0; i <= platinumChestUncommon; i++)
+        {
+        platinumChestDrops.Add("Uncommon");
+        }
+        for (int i = 0; i <= platinumChestRare; i++)
+        {
+        platinumChestDrops.Add("Rare");
+        }
+        for (int i = 0; i <= platinumChestEpic; i++)
+        {
+        platinumChestDrops.Add("Epic");
+        }
+        for (int i = 0; i <= platinumChestLegendary; i++)
+        {
+        platinumChestDrops.Add("Legendary");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //float woodenPercent = (woodenChest / chestsAddedUp) * 100f;
-        //float bronzePercent = (bronzeChest / chestsAddedUp) * 100f;
-        //float silverPercent = (silverChest / chestsAddedUp) * 100f;
-        //float platinumPercent = (platinumChest / chestsAddedUp) * 100f;
-        //Debug.Log("w"+woodenPercent+"b"+bronzePercent+"s"+silverPercent+"p"+platinumPercent);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            System.Random rnd = new System.Random();
+            int chestPicked = rnd.Next(chestTypes.Count);
+            if (chestTypes[chestPicked] == "Wooden")
+            {
+                int woodPicked = rnd.Next(woodChestDrops.Count);
+                Debug.Log((string)chestTypes[chestPicked] + woodChestDrops[woodPicked]);
+            }
+            if (chestTypes[chestPicked] == "Bronze")
+            {
+                int bronzePicked = rnd.Next(bronzeChestDrops.Count);
+                Debug.Log((string)chestTypes[chestPicked] + bronzeChestDrops[bronzePicked]);
+            }
+            if (chestTypes[chestPicked] == "Silver")
+            {
+                int silverPicked = rnd.Next(silverChestDrops.Count);
+                Debug.Log((string)chestTypes[chestPicked] + silverChestDrops[silverPicked]);
+            }
+            if (chestTypes[chestPicked] == "Gold")
+            {
+                int goldPicked = rnd.Next(goldChestDrops.Count);
+                Debug.Log((string)chestTypes[chestPicked] + goldChestDrops[goldPicked]);
+            }
+            if (chestTypes[chestPicked] == "Platinum")
+            {
+                int platinumPicked = rnd.Next(platinumChestDrops.Count);
+                Debug.Log((string)chestTypes[chestPicked] + platinumChestDrops[platinumPicked]);
+            }
+        }
     }
 }
