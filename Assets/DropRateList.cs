@@ -91,14 +91,83 @@ public class DropRateList : MonoBehaviour
         platinumChestDrops.Add("Rare");
         platinumChestDrops.Add("Epic");
         platinumChestDrops.Add("Legendary");
+        //coulda done a forloop
+        int chestsAddedUp = woodenChest + bronzeChest + silverChest + goldChest + platinumChest;
+        int woodenAddedUp = woodenChestCommon + woodenChestUncommon + woodenChestRare + woodenChestEpic + woodenChestLegendary;
+        int bronzeAddedUp = bronzeChestCommon + bronzeChestUncommon + bronzeChestRare + bronzeChestEpic + bronzeChestLegendary;
+        int silverAddedUp = silverChestCommon + silverChestUncommon + silverChestRare + silverChestEpic + silverChestLegendary;
+        int goldAddedUp = goldChestCommon + goldChestUncommon + goldChestRare + goldChestEpic + goldChestLegendary;
+        int platinumAddedUp = platinumChestCommon + platinumChestUncommon + platinumChestRare + platinumChestEpic + platinumChestLegendary;
+
+        int chestChance = UnityEngine.Random.Range (0, chestsAddedUp);
+        int woodenChance = UnityEngine.Random.Range(0, woodenAddedUp);
+        int bronzeChance = UnityEngine.Random.Range (0, bronzeAddedUp);
+        int silverChance = UnityEngine.Random.Range (0, silverAddedUp);
+        int goldChance = UnityEngine.Random.Range (0, goldAddedUp);
+        int platinumChance = UnityEngine.Random.Range (0, platinumAddedUp);
+
+        if (chestChance <= woodenChest)
+            if(chestChance >= bronzeChest)
+            {
+            if (woodenChance <= woodenChestLegendary)
+            {
+                Debug.Log("Wooden Chest " + "Legendary");
+            }
+            if (woodenChance <= woodenChestEpic)
+                if (woodenChance >= woodenChestLegendary)
+                {
+                    Debug.Log("Wooden Chest " + "Epic");
+                }
+            if (woodenChance <= woodenChestRare)
+                if (woodenChance >= woodenChestEpic)
+                {
+                    Debug.Log("Wooden Chest " + "Rare");
+                }
+            if (woodenChance <= woodenChestUncommon)
+                if (woodenChance >= woodenChestRare)
+                {
+                    Debug.Log("Wooden Chest " + "Uncommon");
+                }
+            if (woodenChance <= woodenChestCommon)
+                if (woodenChance >= woodenChestUncommon)
+                {
+                    Debug.Log("Wooden Chest " + "Common");
+                }
+        }
+
+        if (chestChance <= platinumChest)
+        {
+            if(platinumChance <= platinumChestLegendary)
+            {
+                Debug.Log("Platinum Chest " + "Legendary");
+            }
+            if(platinumChance <= platinumChestEpic)
+                if(platinumChance >= platinumChestLegendary)
+                {
+                    Debug.Log("Platinum Chest " + "Epic");
+                }
+            if(platinumChance <= platinumChestRare)
+                if(platinumChance >= platinumChestEpic)
+                {
+                    Debug.Log("Platinum Chest " + "Rare");
+                }
+            if(platinumChance <= platinumChestUncommon)
+                if(platinumChance >= platinumChestRare)
+                {
+                    Debug.Log("Platinum Chest " + "Uncommon");
+                }
+            if(platinumChance <= platinumChestCommon)
+                if(platinumChance >= platinumChestUncommon)
+                {
+                    Debug.Log("Platinum Chest " + "Common");
+                }
+        }
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        int chestsAddedUp = woodenChest + bronzeChest + silverChest + goldChest + platinumChest;
-        int chestChance = UnityEngine.Random.Range (0, chestsAddedUp);
         //float woodenPercent = (woodenChest / chestsAddedUp) * 100f;
         //float bronzePercent = (bronzeChest / chestsAddedUp) * 100f;
         //float silverPercent = (silverChest / chestsAddedUp) * 100f;
